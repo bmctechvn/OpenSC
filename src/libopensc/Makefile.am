@@ -40,18 +40,18 @@ libopensc_la_SOURCES_BASE = \
 	\
 	ctbcs.c reader-ctapi.c reader-pcsc.c reader-openct.c reader-tr03119.c \
 	\
-	card-setcos.c card-flex.c card-gpk.c \
-	card-cardos.c card-tcos.c card-default.c \
-	card-mcrd.c card-starcos.c card-openpgp.c \
-	card-openpgp-2.c card-openpgp-3.c card-openpgp-4.c \
+	#card-setcos.c card-flex.c card-gpk.c \
+	#card-cardos.c card-tcos.c card-default.c \
+	#card-mcrd.c card-starcos.c
+	card-openpgp.c card-openpgp-2.c card-openpgp-3.c card-openpgp-4.c \
 	card-openpgp-5.c card-openpgp-6.c card-openpgp-7.c card-openpgp-8.c \
 	card-openpgp-9.c card-openpgp-a.c card-openpgp-b.c \
-	card-oberthur.c card-belpic.c card-atrust-acos.c \
-	card-entersafe.c card-epass2003.c card-coolkey.c card-incrypto34.c \
-	card-piv.c card-cac-common.c card-cac.c card-cac1.c \
-	card-muscle.c card-asepcos.c card-akis.c card-gemsafeV1.c card-rutoken.c \
-	card-rtecp.c card-westcos.c card-myeid.c \
-	card-itacns.c card-authentic.c \
+	#card-oberthur.c card-belpic.c card-atrust-acos.c \
+	#card-entersafe.c card-epass2003.c card-coolkey.c card-incrypto34.c \
+	#card-piv.c card-cac-common.c card-cac.c card-cac1.c \
+	#card-muscle.c card-asepcos.c card-akis.c card-gemsafeV1.c card-rutoken.c \
+	#card-rtecp.c card-westcos.c card-myeid.c \
+	#card-itacns.c card-authentic.c \
 	card-iasecc.c iasecc-sdo.c iasecc-sm.c card-sc-hsm.c \
 	card-dnie.c cwa14890.c cwa-dnie.c \
 	card-isoApplet.c card-masktech.c card-gids.c card-jpki.c \
