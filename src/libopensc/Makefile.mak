@@ -18,9 +18,9 @@ OBJECTS			= \
 	#card-cardos.obj card-tcos.obj
 	card-default.obj \
 	#card-mcrd.obj card-starcos.obj
-	card-openpgp.obj card-openpgp-2.obj card-openpgp-3.obj \
-	card-openpgp-4.obj card-openpgp-5.obj card-openpgp-6.obj card-openpgp-7.obj \
-	card-openpgp-8.obj card-openpgp-9.obj card-openpgp-a.obj card-openpgp-b.obj \
+	card-openpgp.obj card-openpgp-2.obj card-openpgp-3.obj card-openpgp-4.obj \
+	#card-openpgp-5.obj card-openpgp-6.obj card-openpgp-7.obj \
+	#card-openpgp-8.obj card-openpgp-9.obj card-openpgp-a.obj card-openpgp-b.obj \
 	#card-oberthur.obj card-belpic.obj card-atrust-acos.obj \
 	#card-entersafe.obj card-epass2003.obj card-coolkey.obj \
 	#card-incrypto34.obj card-cac.obj card-cac1.obj card-cac-common.obj \

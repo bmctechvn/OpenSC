@@ -315,7 +315,7 @@ again:
 	}
 
 	/* EXPERIMENTAL
-	 * if its a Yubikey4 we want both PIV-II and OpenPGP loaded.
+	 * if its a BMC Card have multiple OpenPGP loaded.
 	 * this is a proof of concept mod
 	 */
 	 /* if already connected to a card driver, just do this reader */
