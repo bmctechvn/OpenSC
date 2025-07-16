@@ -2280,7 +2280,7 @@ pgp_set_MSE(sc_card_t *card, int key, u8 p2)
 static int pgp_select(sc_card_t* card) {
 	sc_apdu_t		apdu;
 	int r;
-	sc_format_apdu(card, &apdu, SC_APDU_CASE_4, 0xA4, 0x04, 0x00);
+	sc_format_apdu(card, &apdu, SC_APDU_CASE_3_SHORT, 0xA4, 0x04, 0x00);
 	apdu.data = (const unsigned char*)AID;
 	r = sc_transmit_apdu(card, &apdu);
 	if (r != SC_SUCCESS) return 0;
