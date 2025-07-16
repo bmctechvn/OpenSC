@@ -2280,7 +2280,7 @@ static int pgp_select(sc_card_t* card) {
 	sc_apdu_t		apdu;
 	int r;
 	sc_format_apdu(card, &apdu, SC_APDU_CASE_4_SHORT, 0xA4, 0x04, 0x00);
-	apdu.data = AID;
+	apdu.data = (const unsigned char*)AID;
 	r = sc_transmit_apdu(card, &apdu);
 	if (r != SC_SUCCESS) return 0;
 	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
