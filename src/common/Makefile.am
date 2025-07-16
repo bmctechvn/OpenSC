@@ -6,8 +6,8 @@ noinst_PROGRAMS = compat_getopt_main
 dist_noinst_DATA = \
 	README.compat_getopt ChangeLog.compat_getopt \
 	LICENSE.compat_getopt compat_getopt.txt \
-	compat_getopt_main.c \
-	README.compat_strlcpy compat_strlcpy.3
+	compat_getopt_main.c
+#	README.compat_strlcpy compat_strlcpy.3
 noinst_HEADERS = compat_strlcat.h compat_strlcpy.h compat_strnlen.h compat_getpass.h compat_getopt.h simclist.h libpkcs11.h libscdl.h compat_overflow.h
 
 AM_CPPFLAGS = -I$(top_srcdir)/src
