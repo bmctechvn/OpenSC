@@ -18,15 +18,15 @@ DISTCHECK_CONFIGURE_FLAGS = --with-completiondir=/tmp
 SUBDIRS = etc src win32 doc MacOSX tests
 
 dist_noinst_SCRIPTS = bootstrap bootstrap.ci
-dist_noinst_DATA = README \
-	packaging/debian.templates/changelog \
-	packaging/debian.templates/compat \
-	packaging/debian.templates/control \
-	packaging/debian.templates/copyright \
-	packaging/debian.templates/docs \
-	packaging/debian.templates/opensc.install \
-	packaging/debian.templates/rules
-dist_doc_DATA = NEWS
+#dist_noinst_DATA = README \
+#	packaging/debian.templates/changelog \
+#	packaging/debian.templates/compat \
+#	packaging/debian.templates/control \
+#	packaging/debian.templates/copyright \
+#	packaging/debian.templates/docs \
+#	packaging/debian.templates/opensc.install \
+#	packaging/debian.templates/rules
+#dist_doc_DATA = NEWS
 
 include $(top_srcdir)/aminclude_static.am
 clean-local: code-coverage-clean
