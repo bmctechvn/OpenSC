@@ -2273,6 +2273,19 @@ pgp_set_MSE(sc_card_t *card, int key, u8 p2)
 	LOG_FUNC_RETURN(card->ctx, SC_SUCCESS);
 }
 
+/**
+* Select Appplet MP Added
+*/
+static int pgp_select(sc_card_t* card) {
+	sc_apdu_t		apdu;
+	int r;
+	sc_format_apdu(card, &apdu, SC_APDU_CASE_4_SHORT, 0xA4, 0x04, 0x00);
+	apdu.data = AID;
+	r = sc_transmit_apdu(card, &apdu);
+	if (r != SC_SUCCESS) return 0;
+	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
+	return sc_check_sw(card, apdu.sw1, apdu.sw2);
+}
 
 /**
  * ABI: ISO 7816-8 COMPUTE DIGITAL SIGNATURE.
@@ -2330,20 +2343,6 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	LOG_TEST_RET(card->ctx, r, "Card returned error");
 
 	LOG_FUNC_RETURN(card->ctx, (int)apdu.resplen);
-}
-
-/**
-* Select Appplet MP Added
-*/
-static int pgp_select(sc_card_t* card) {
-	sc_apdu_t		apdu;
-	int r;
-	sc_format_apdu(card, &apdu, SC_APDU_CASE_4_SHORT, 0xA4, 0x04, 0x00);
-	apdu.data = AID;
-	r = sc_transmit_apdu(card, &apdu);
-	if (r != SC_SUCCESS) return 0;
-	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
-	return sc_check_sw(card, apdu.sw1, apdu.sw2);
 }
 
 /**
