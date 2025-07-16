@@ -42,7 +42,7 @@ libopensc_la_SOURCES_BASE = \
 	\
 	card-setcos.c card-flex.c card-gpk.c \
 	card-cardos.c card-tcos.c card-default.c \
-	card-mcrd.c card-starcos.c
+	card-mcrd.c card-starcos.c \
 	card-openpgp.c card-openpgp-2.c card-openpgp-3.c card-openpgp-4.c \
 	card-openpgp-5.c card-openpgp-6.c card-openpgp-7.c card-openpgp-8.c \
 	card-openpgp-9.c card-openpgp-a.c card-openpgp-b.c \
