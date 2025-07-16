@@ -2294,7 +2294,7 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	if (env->operation != SC_SEC_OPERATION_SIGN)
 		LOG_TEST_RET(card->ctx, SC_ERROR_INVALID_ARGUMENTS,
 				"invalid operation");
-
+	pgp_select(card);
 	switch (env->key_ref[0]) {
 	case 0x00: /* signature key */
 		/* PSO SIGNATURE */
@@ -2333,6 +2333,19 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	LOG_FUNC_RETURN(card->ctx, (int)apdu.resplen);
 }
 
+/**
+* Select Appplet MP Added
+*/
+static int pgp_select(sc_card_t* card) {
+	sc_apdu_t		apdu;
+	int r;
+	sc_format_apdu(card, &apdu, SC_APDU_CASE_4_SHORT, 0xA4, 0x04, 0x00);
+	apdu.data = AID;
+	r = sc_transmit_apdu(card, &apdu);
+	if (r != SC_SUCCESS) return 0;
+	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
+	return sc_check_sw(card, apdu.sw1, apdu.sw2);
+}
 
 /**
  * ABI: ISO 7816-8 DECIPHER - perform deciphering operation.
