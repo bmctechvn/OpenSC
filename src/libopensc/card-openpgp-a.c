@@ -59,6 +59,7 @@ static const char default_cardname[]    = "BMC card";
 static const char default_cardname_v1[] = "BMC card v1.x";
 static const char default_cardname_v2[] = "BMC card v2.x";
 static const char default_cardname_v3[] = "BMC card v3.x";
+static const char* AID = "D276:0001:240a";
 
 
 static const struct sc_atr_table pgp_atrs[] = {
@@ -318,7 +319,7 @@ pgp_match_card(sc_card_t *card)
 		sc_file_t *file = NULL;
 
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:240a", &partial_aid);
+		sc_format_path(AID, &partial_aid);
 		partial_aid.type = SC_PATH_TYPE_DF_NAME;
 		/* OpenPGP card only supports selection *with* requested FCI */
 		i = iso_ops->select_file(card, &partial_aid, &file);
@@ -378,7 +379,7 @@ pgp_init(sc_card_t *card)
 	card->cla = 0x00;
 
 	/* select application "OpenPGP" */
-	sc_format_path("D276:0001:240a", &path);
+	sc_format_path(AID, &path);
 	path.type = SC_PATH_TYPE_DF_NAME;
 	if ((r = iso_ops->select_file(card, &path, &file)) < 0) {
 		sc_file_free(file);
@@ -2159,7 +2160,7 @@ static int pgp_logout(struct sc_card *card)
 		sc_file_t *file = NULL;
 
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:240a", &path);
+		sc_format_path(AID, &path);
 		path.type = SC_PATH_TYPE_DF_NAME;
 		r = iso_ops->select_file(card, &path, &file);
 		sc_file_free(file);
@@ -3743,7 +3744,7 @@ static int pgp_card_reader_lock_obtained(sc_card_t *card, int was_reset)
 		sc_file_t	*file = NULL;
 		sc_path_t	path;
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:240a", &path);
+		sc_format_path(AID, &path);
 		path.type = SC_PATH_TYPE_DF_NAME;
 		r = iso_ops->select_file(card, &path, &file);
 		sc_file_free(file);

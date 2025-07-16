@@ -59,7 +59,7 @@ static const char default_cardname[]    = "BMC card";
 static const char default_cardname_v1[] = "BMC card v1.x";
 static const char default_cardname_v2[] = "BMC card v2.x";
 static const char default_cardname_v3[] = "BMC card v3.x";
-
+static const char *AID = "D276:0001:2401";
 
 static const struct sc_atr_table pgp_atrs[] = {
 	{ "3b:fa:13:00:ff:81:31:80:45:00:31:c1:73:c0:01:00:00:90:00:b1", NULL, default_cardname_v1, SC_CARD_TYPE_OPENPGP_V1, 0, NULL },
@@ -318,7 +318,7 @@ pgp_match_card(sc_card_t *card)
 		sc_file_t *file = NULL;
 
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:2401", &partial_aid);
+		sc_format_path(AID, &partial_aid);
 		partial_aid.type = SC_PATH_TYPE_DF_NAME;
 		/* OpenPGP card only supports selection *with* requested FCI */
 		i = iso_ops->select_file(card, &partial_aid, &file);
@@ -378,7 +378,7 @@ pgp_init(sc_card_t *card)
 	card->cla = 0x00;
 
 	/* select application "OpenPGP" */
-	sc_format_path("D276:0001:2401", &path);
+	sc_format_path(AID, &path);
 	path.type = SC_PATH_TYPE_DF_NAME;
 	if ((r = iso_ops->select_file(card, &path, &file)) < 0) {
 		sc_file_free(file);
@@ -2159,7 +2159,7 @@ int pgp_logout(struct sc_card *card)
 		sc_file_t *file = NULL;
 
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:2401", &path);
+		sc_format_path(AID, &path);
 		path.type = SC_PATH_TYPE_DF_NAME;
 		r = iso_ops->select_file(card, &path, &file);
 		sc_file_free(file);
@@ -2293,7 +2293,7 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	if (env->operation != SC_SEC_OPERATION_SIGN)
 		LOG_TEST_RET(card->ctx, SC_ERROR_INVALID_ARGUMENTS,
 				"invalid operation");
-
+	pgp_select(card);
 	switch (env->key_ref[0]) {
 	case 0x00: /* signature key */
 		/* PSO SIGNATURE */
@@ -2332,6 +2332,19 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	LOG_FUNC_RETURN(card->ctx, (int)apdu.resplen);
 }
 
+/**
+* Select Appplet MP Added
+*/
+static int pgp_select(sc_card_t* card) {
+	sc_apdu_t		apdu;
+	int r;
+	sc_format_apdu(card, &apdu, SC_APDU_CASE_4_SHORT, 0xA4, 0x04, 0x00);
+	apdu.data = AID;
+	r = sc_transmit_apdu(card, &apdu);
+	if (r != SC_SUCCESS) return 0;
+	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
+	return sc_check_sw(card, apdu.sw1, apdu.sw2);
+}
 
 /**
  * ABI: ISO 7816-8 DECIPHER - perform deciphering operation.
@@ -3743,7 +3756,7 @@ static int pgp_card_reader_lock_obtained(sc_card_t *card, int was_reset)
 		sc_file_t	*file = NULL;
 		sc_path_t	path;
 		/* select application "OpenPGP" */
-		sc_format_path("D276:0001:2401", &path);
+		sc_format_path(AID, &path);
 		path.type = SC_PATH_TYPE_DF_NAME;
 		r = iso_ops->select_file(card, &path, &file);
 		sc_file_free(file);
