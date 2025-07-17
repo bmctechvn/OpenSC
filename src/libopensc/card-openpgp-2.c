@@ -2310,7 +2310,7 @@ pgp_compute_signature(sc_card_t *card, const u8 *data,
 	if (env->operation != SC_SEC_OPERATION_SIGN)
 		LOG_TEST_RET(card->ctx, SC_ERROR_INVALID_ARGUMENTS,
 				"invalid operation");
-	pgp_select(card);
+	//pgp_select(card);
 	switch (env->key_ref[0]) {
 	case 0x00: /* signature key */
 		/* PSO SIGNATURE */
