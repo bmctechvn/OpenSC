@@ -2278,10 +2278,11 @@ pgp_set_MSE(sc_card_t *card, int key, u8 p2)
 */
 static int pgp_select(sc_card_t* card) {
 	sc_apdu_t		apdu;
-	int r;
+	int r;	
+	const unsigned char _AID_[] = { 0xD2, 0x76, 0x00, 0x01, 0x24, 0x02 };
 	sc_format_apdu(card, &apdu, SC_APDU_CASE_3_SHORT, 0xA4, 0x04, 0x00);
-	size_t aid_len = sizeof(AID);
-	apdu.data = (const unsigned char*)AID;
+	size_t aid_len = sizeof(_AID_);
+	apdu.data = (const unsigned char*)_AID_;
 	apdu.datalen = aid_len; // Độ dài thực tế của dữ liệu
 	apdu.lc = aid_len;      // Gán giá trị cho byte Lc trong header APDU
 	r = sc_transmit_apdu(card, &apdu);
