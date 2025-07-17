@@ -2033,6 +2033,24 @@ pgp_put_data(sc_card_t *card, unsigned int tag, const u8 *buf, size_t buf_len)
 	LOG_FUNC_RETURN(card->ctx, (int)buf_len);
 }
 
+/**
+* Select Appplet MP Added
+*/
+
+static int pgp_select(sc_card_t* card) {
+	sc_apdu_t		apdu;
+	int r;
+	const unsigned char _AID_[] = { 0xD2, 0x76, 0x00, 0x01, 0x24, 0x02 };
+	sc_format_apdu(card, &apdu, SC_APDU_CASE_3_SHORT, 0xA4, 0x04, 0x00);
+	size_t aid_len = sizeof(_AID_);
+	apdu.data = (const unsigned char*)_AID_;
+	apdu.datalen = aid_len; // Độ dài thực tế của dữ liệu
+	apdu.lc = aid_len;      // Gán giá trị cho byte Lc trong header APDU
+	r = sc_transmit_apdu(card, &apdu);
+	if (r != SC_SUCCESS) return r;
+	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
+	return sc_check_sw(card, apdu.sw1, apdu.sw2);
+}
 
 /**
  * ABI: ISO 7816-9 PIN CMD - verify/change/unblock a PIN.
@@ -2043,7 +2061,7 @@ pgp_pin_cmd(sc_card_t *card, struct sc_pin_cmd_data *data, int *tries_left)
 	struct pgp_priv_data *priv = DRVDATA(card);
 
 	LOG_FUNC_CALLED(card->ctx);
-
+	pgp_select(card);
 	if (data->pin_type != SC_AC_CHV)
 		LOG_TEST_RET(card->ctx, SC_ERROR_INVALID_ARGUMENTS,
 				"invalid PIN type");
@@ -2271,24 +2289,6 @@ pgp_set_MSE(sc_card_t *card, int key, u8 p2)
 	LOG_TEST_RET(card->ctx, r, "Card returned error");
 
 	LOG_FUNC_RETURN(card->ctx, SC_SUCCESS);
-}
-
-/**
-* Select Appplet MP Added
-*/
-static int pgp_select(sc_card_t* card) {
-	sc_apdu_t		apdu;
-	int r;	
-	const unsigned char _AID_[] = { 0xD2, 0x76, 0x00, 0x01, 0x24, 0x02 };
-	sc_format_apdu(card, &apdu, SC_APDU_CASE_3_SHORT, 0xA4, 0x04, 0x00);
-	size_t aid_len = sizeof(_AID_);
-	apdu.data = (const unsigned char*)_AID_;
-	apdu.datalen = aid_len; // Độ dài thực tế của dữ liệu
-	apdu.lc = aid_len;      // Gán giá trị cho byte Lc trong header APDU
-	r = sc_transmit_apdu(card, &apdu);
-	if (r != SC_SUCCESS) return r;
-	LOG_TEST_RET(card->ctx, r, "SELECT APPLET PGP Sent Card returend error");
-	return sc_check_sw(card, apdu.sw1, apdu.sw2);
 }
 
 /**
