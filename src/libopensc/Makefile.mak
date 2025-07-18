@@ -17,7 +17,7 @@ OBJECTS			= \
 	card-setcos.obj card-flex.obj card-gpk.obj \
 	card-cardos.obj card-tcos.obj \
 	card-default.obj \
-	card-mcrd.obj card-starcos.obj
+	card-mcrd.obj card-starcos.obj \
 	card-openpgp.obj card-openpgp-2.obj card-openpgp-3.obj card-openpgp-4.obj \
 	card-openpgp-5.obj card-openpgp-6.obj card-openpgp-7.obj \
 	card-openpgp-8.obj card-openpgp-9.obj card-openpgp-a.obj card-openpgp-b.obj \

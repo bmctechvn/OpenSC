@@ -160,6 +160,7 @@ static const struct _sc_driver_entry internal_card_drivers[] = {
 	{ "openpgp-8",	(void* (*)(void)) sc_get_openpgp_driver_8 },
 	{ "openpgp-9",	(void* (*)(void)) sc_get_openpgp_driver_9 },
 	{ "openpgp-a",	(void* (*)(void)) sc_get_openpgp_driver_a },
+	{ "openpgp-b",	(void* (*)(void)) sc_get_openpgp_driver_b },
 	{ "jpki",	(void *(*)(void)) sc_get_jpki_driver },
 	{ "npa",	(void *(*)(void)) sc_get_npa_driver },
 	{ "cac1",	(void *(*)(void)) sc_get_cac1_driver },
