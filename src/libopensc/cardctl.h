@@ -949,7 +949,7 @@ typedef struct sc_cardctl_piv_genkey_info_st {
 #define SC_OPENPGP_KEYFORMAT_EC_STD	0
 #define SC_OPENPGP_KEYFORMAT_EC_STDPUB	0xFF
 
-#define SC_OPENPGP_MAX_EXP_BITS		0x20 /* maximum exponent length supported in bits */
+#define SC_OPENPGP_MAX_EXP_BITS		0x11 /* maximum exponent length supported in bits MP Mod*/
 
 typedef struct sc_cardctl_openpgp_keygen_info {
 	u8 key_id;		/* SC_OPENPGP_KEY_... */
