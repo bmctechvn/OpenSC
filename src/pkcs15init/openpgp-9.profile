@@ -58,7 +58,7 @@ filesystem {
 		# Here comes the application DF
 		DF PKCS15-AppDF {
 			type	= DF;
-			aid		= D2:76:00:01:24:01;
+			aid		= D2:76:00:01:24:09;
 			acl		= *=NONE;
 
 			EF PKCS15-TokenInfo {
