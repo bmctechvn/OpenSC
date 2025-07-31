@@ -58,7 +58,8 @@ libopensc_la_SOURCES_BASE = \
 	card-npa.c card-esteid2018.c card-idprime.c \
 	card-edo.c card-nqApplet.c card-skeid.c card-eoi.c \
 	\
-	pkcs15-openpgp.c pkcs15-starcert.c pkcs15-cardos.c \
+	pkcs15-openpgp.c pkcs15-openpgp-2.c \
+	pkcs15-starcert.c pkcs15-cardos.c \
 	pkcs15-tcos.c pkcs15-esteid.c pkcs15-gemsafeGPK.c \
 	pkcs15-actalis.c pkcs15-atrust-acos.c pkcs15-tccardos.c pkcs15-piv.c \
 	pkcs15-cac.c pkcs15-esinit.c pkcs15-westcos.c pkcs15-pteid.c \

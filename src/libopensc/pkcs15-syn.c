@@ -37,6 +37,7 @@
 
 struct sc_pkcs15_emulator_handler builtin_emulators[] = {
 	{ "openpgp",	sc_pkcs15emu_openpgp_init_ex	},
+	{ "openpgp-2",	sc_pkcs15emu_openpgp_2_init_ex	},
 	{ "starcert",	sc_pkcs15emu_starcert_init_ex	},
 	{ "tcos",	sc_pkcs15emu_tcos_init_ex	},
 	{ "esteid",	sc_pkcs15emu_esteid_init_ex	},

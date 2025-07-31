@@ -45,6 +45,7 @@ libpkcs15init_la_SOURCES = \
 	pkcs15-entersafe.c pkcs15-epass2003.c \
 	pkcs15-rtecp.c pkcs15-myeid.c \
 	pkcs15-oberthur.c pkcs15-oberthur-awp.c \
-	pkcs15-authentic.c pkcs15-iasecc.c pkcs15-openpgp.c \
+	pkcs15-authentic.c pkcs15-iasecc.c \
+	pkcs15-openpgp.c pkcs15-openpgp-2.c \
 	pkcs15-sc-hsm.c \
 	pkcs15-isoApplet.c pkcs15-gids.c
