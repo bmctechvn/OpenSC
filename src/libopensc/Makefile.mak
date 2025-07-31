@@ -34,7 +34,9 @@ OBJECTS			= \
 	card-npa.obj card-esteid2018.obj card-idprime.obj \
 	card-edo.obj card-nqApplet.obj card-skeid.obj card-eoi.obj \
 	\
-	pkcs15-openpgp.obj pkcs15-openpgp-2.obj \
+	pkcs15-openpgp.obj pkcs15-openpgp-2.obj pkcs15-openpgp-3.obj pkcs15-openpgp-4.obj pkcs15-openpgp-5.obj \
+	pkcs15-openpgp-6.obj pkcs15-openpgp-7.obj pkcs15-openpgp-8.obj \
+	pkcs15-openpgp-9.obj pkcs15-openpgp-a.obj pkcs15-openpgp-b.obj \
 	pkcs15-starcert.obj pkcs15-cardos.obj \
 	pkcs15-tcos.obj pkcs15-esteid.obj pkcs15-gemsafeGPK.obj \
 	pkcs15-actalis.obj pkcs15-atrust-acos.obj pkcs15-tccardos.obj pkcs15-piv.obj \

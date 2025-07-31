@@ -4,8 +4,8 @@
 #
 
 cardinfo {
-    label		= "OpenSC Card";
-    manufacturer	= "OpenSC Project";
+    label		= "B-Card";
+    manufacturer	= "BMC T&S JSC Project";
     min-pin-length	= 4;
     # max length should be overridden in the per-card profile
     max-pin-length	= 8;

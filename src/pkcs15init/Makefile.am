@@ -28,7 +28,10 @@ dist_pkgdata_DATA = \
 	iasecc.profile \
 	ias_adele_admin1.profile ias_adele_admin2.profile ias_adele_common.profile \
 	iasecc_generic_pki.profile iasecc_admin_eid.profile iasecc_generic_oberthur.profile \
-	openpgp.profile sc-hsm.profile \
+	openpgp.profile openpgp-2.profile openpgp-3.profile openpgp-4.profile openpgp-5.profile \
+	openpgp-6.profile openpgp-7.profile openpgp-8.profile openpgp-9.profile \
+	openpgp-a.profile openpgp-b.profile \
+	sc-hsm.profile \
 	isoApplet.profile gids.profile
 
 AM_CPPFLAGS = -D'SC_PKCS15_PROFILE_DIRECTORY="$(pkgdatadir)"' \
@@ -46,6 +49,8 @@ libpkcs15init_la_SOURCES = \
 	pkcs15-rtecp.c pkcs15-myeid.c \
 	pkcs15-oberthur.c pkcs15-oberthur-awp.c \
 	pkcs15-authentic.c pkcs15-iasecc.c \
-	pkcs15-openpgp.c pkcs15-openpgp-2.c \
+	pkcs15-openpgp.c pkcs15-openpgp-2.c pkcs15-openpgp-3.c pkcs15-openpgp-4.c pkcs15-openpgp-5.c \
+	pkcs15-openpgp-6.c pkcs15-openpgp-7.c pkcs15-openpgp-8.c pkcs15-openpgp-9.c \
+	pkcs15-openpgp-a.c pkcs15-openpgp-b.c \
 	pkcs15-sc-hsm.c \
 	pkcs15-isoApplet.c pkcs15-gids.c

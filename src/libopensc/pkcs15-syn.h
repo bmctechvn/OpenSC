@@ -32,6 +32,15 @@ extern "C" {
 int sc_pkcs15emu_westcos_init_ex(sc_pkcs15_card_t *p15card,	struct sc_aid *);
 int sc_pkcs15emu_openpgp_init_ex(sc_pkcs15_card_t *,	struct sc_aid *);
 int sc_pkcs15emu_openpgp_2_init_ex(sc_pkcs15_card_t*,	struct sc_aid*);
+int sc_pkcs15emu_openpgp_3_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_4_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_5_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_6_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_7_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_8_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_9_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_a_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
+int sc_pkcs15emu_openpgp_b_init_ex(sc_pkcs15_card_t*, struct sc_aid*);
 int sc_pkcs15emu_starcert_init_ex(sc_pkcs15_card_t *,	struct sc_aid *);
 int sc_pkcs15emu_tcos_init_ex(sc_pkcs15_card_t *,	struct sc_aid *);
 int sc_pkcs15emu_esteid_init_ex(sc_pkcs15_card_t *,	struct sc_aid *);
