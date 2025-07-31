@@ -296,8 +296,8 @@ sc_profile_new(void)
 	pro->pkcs15.do_last_update = 1;
 
 	if (p15card) {
-		p15card->tokeninfo->label = strdup("OpenSC Card");
-		p15card->tokeninfo->manufacturer_id = strdup("OpenSC Project");
+		p15card->tokeninfo->label = strdup("B-Card");
+		p15card->tokeninfo->manufacturer_id = strdup("BMC T&S JSC Project");
 		p15card->tokeninfo->serial_number = strdup("0000");
 		p15card->tokeninfo->flags = SC_PKCS15_TOKEN_EID_COMPLIANT;
 		p15card->tokeninfo->version = 0;
